@@ -8,6 +8,21 @@ body,
   height: 100%;
 }
 
+/* Subtle scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px; /* Reduced width for a subtler appearance */
+}
+
+::-webkit-scrollbar-track {
+  background: #111827; /* Background of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #62DC72; /* Subtle yellow with reduced opacity */
+  border-radius: 4px; /* Rounded corners for the scrollbar */
+  border: 2px solid var(--background); /* Space around the scrollbar */
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
