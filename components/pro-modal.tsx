@@ -8,6 +8,9 @@ import { cn } from "@/lib/utils";
 import { Check, Code, Crown, ImageIcon, MessageSquare, Music, VideoIcon } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 const montserrat = Montserrat({
   weight: "600",
@@ -49,6 +52,21 @@ const tools = [
 
 export const ProModal = () => {
   const proModal = useProModal();
+  const [loading, setLoading] = useState(false);
+
+  const onSubscribe = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get("/api/stripe");
+
+      window.location.href = response.data.url;
+
+    } catch (error) {
+      toast.error("Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <Dialog open={proModal.isOpen} onOpenChange={proModal.onClose}>
@@ -90,9 +108,11 @@ export const ProModal = () => {
         </DialogHeader>
         <DialogFooter>
           <Button
+            disabled={loading}
             size="lg"
             variant="premium"
             className="w-full"
+            onClick={onSubscribe}
           >
             Upgrade
             <Crown className="w-4 h-4 ml-2 fill-amber-500 text-amber-500" />

@@ -49,7 +49,7 @@ const DashboardPage = () => {
     <div>
       <div className="mb-8 space-y-4">
         <h2 className="text-2xl md:text-4xl font-bold text-center">
-          Explore the power of AI on <h1 className="text-yellow-500">HyperDrive</h1>
+          Explore the power of AI on <p className="text-yellow-500">HyperDrive</p>
         </h2>
         <p className="text-muted-foreground font-light text-sm md:text-lg text-center">
           TurboCharged Conversations at <span className="text-red-500 font-italic">&lt;Warp&gt;</span> Speed
